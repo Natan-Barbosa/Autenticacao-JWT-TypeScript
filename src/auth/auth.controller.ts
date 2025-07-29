@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 import { AuthDto } from './auth.dto';
 import { Request as ExpressRequest } from 'express';
 import { AuthGuard } from './auth.guard';
+import { Role, Roles } from 'src/decorators/roles.decorator';
 
 interface AuthenticatedRequest extends ExpressRequest {
   user: {
@@ -32,8 +33,22 @@ export class AuthController {
 
   @Get('/private/profile')
   @UseGuards(AuthGuard)
-  public getProfile(@Request() req: AuthenticatedRequest) {
+  public getPrivateRoute(@Request() req: AuthenticatedRequest) {
     return req.user;
+  }
+
+  @Roles(Role.Admin)
+  @UseGuards(AuthGuard)
+  @Get('/private/admin')
+  public getPrivateAdminRoute() {
+    return 'This Is A Admin Route';
+  }
+
+  @Roles(Role.User, Role.Admin)
+  @UseGuards(AuthGuard)
+  @Get('/private/user')
+  public getPrivateUserRoute() {
+    return 'this Is A User Route';
   }
 
   @Get('/public/profile')
