@@ -7,11 +7,13 @@ export class UsersService {
       userId: 1,
       email: 'teste1@gmail.com',
       password: '12345678',
+      userRole: 'ADMIN',
     },
     {
       userId: 2,
       email: 'teste2@gmail.com',
       password: '87654321',
+      userRole: 'USER',
     },
   ];
 
