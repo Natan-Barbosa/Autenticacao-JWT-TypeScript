@@ -1,98 +1,185 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Sistema de Autenticação JWT
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Um sistema simples de autenticação e autorização construído com NestJS, JWT e decorators personalizados. O projeto foi desenvolvido com foco em segurança e não utiliza banco de dados para manter a simplicidade.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Características
 
-## Description
+- ✅ Autenticação JWT
+- ✅ Autorização baseada em roles
+- ✅ Guards personalizados
+- ✅ Decorators para controle de acesso
+- ✅ Validação de dados com class-validator
+- ✅ Documentação automática com Swagger
+- ✅ Testes unitários e e2e
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📁 Estrutura do Projeto
 
-## Project setup
-
-```bash
-$ pnpm install
+```
+src/
+├── auth/                    # Módulo de autenticação
+│   ├── auth.controller.ts   # Controller de autenticação
+│   ├── auth.service.ts      # Serviços de autenticação
+│   ├── auth.guard.ts        # Guard JWT
+│   ├── auth.module.ts       # Módulo principal
+│   └── auth.dto.ts          # DTOs de validação
+├── decorators/              # Decorators personalizados
+│   └── roles.decorator.ts   # Decorator para controle de roles
+├── users/                   # Módulo de usuários (service apenas)
+│   ├── users.service.ts     # Serviços de usuários com dados de teste
+│   └── users.module.ts      # Módulo de usuários
+├── test/                    # Testes e2e
+├── app.module.ts           # Módulo raiz
+└── main.ts                 # Ponto de entrada
 ```
 
-## Compile and run the project
+## 🛠️ Tecnologias Utilizadas
+
+- **NestJS** - Framework Node.js
+- **JWT** - Autenticação baseada em tokens
+- **Class Validator** - Validação de dados
+- **Class Transformer** - Transformação de objetos
+- **Swagger** - Documentação da API
+- **Jest** - Testes unitários
+- **TypeScript** - Tipagem estática
+
+## 📋 Pré-requisitos
+
+- Node.js (versão 22 ou superior)
+- npm ou pnpm
+
+## 🔧 Instalação
+
+1. Clone o repositório:
 
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+git clone git@github.com:Natan-Barbosa/Autenticacao-JWT-TypeScript.git
+cd Autenticacao-JWT-TypeScript
 ```
 
-## Run tests
+2. Instale as dependências:
 
 ```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+npm install
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+3. Configure as variáveis de ambiente:
 
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+cp .env.example .env
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+4. Edite o arquivo `.env` com suas configurações:
 
-## Resources
+```env
+JWT_SECRET=seu_jwt_secret_aqui
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+## 🚀 Executando a Aplicação
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### Desenvolvimento
 
-## Support
+```bash
+npm run start:dev
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Produção
 
-## Stay in touch
+```bash
+npm run build
+npm run start:prod
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Debug
 
-## License
+```bash
+npm run start:debug
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 📖 Documentação da API
+
+A documentação completa da API está disponível através do Swagger em:
+
+```
+http://localhost:3000/api
+```
+
+## 🧪 Testes
+
+### Executar todos os testes
+
+```bash
+npm run test
+```
+
+### Testes em modo watch
+
+```bash
+npm run test:watch
+```
+
+### Testes com coverage
+
+```bash
+npm run test:cov
+```
+
+### Testes e2e
+
+```bash
+npm run test:e2e
+```
+
+## 📝 Endpoints Principais
+
+### Autenticação
+
+- `POST /auth/login` - Realizar login
+- `GET /auth/private/profile` - Obter perfil do usuário autenticado (requer autenticação)
+- `GET /auth/private/admin` - Rota exclusiva para administradores (requer role ADMIN)
+- `GET /auth/private/user` - Rota para usuários e administradores (requer role USER ou ADMIN)
+- `GET /auth/public/profile` - Rota pública (sem autenticação)
+
+## 👥 Usuários de Teste
+
+O projeto inclui dois usuários pré-configurados para teste:
+
+### Admin
+
+- **Email**: `teste1@gmail.com`
+- **Senha**: `12345678`
+- **Role**: ADMIN
+
+### Usuário
+
+- **Email**: `teste2@gmail.com`
+- **Senha**: `87654321`
+- **Role**: USER
+
+## 🔒 Sistema de Autorização
+
+### Roles Disponíveis
+
+- `ADMIN` - Acesso total ao sistema
+- `USER` - Acesso limitado aos recursos
+
+### Exemplo de uso do decorator @Roles:
+
+```typescript
+@Get('/admin-only')
+@Roles('ADMIN')
+@UseGuards(AuthGuard, RolesGuard)
+adminOnlyEndpoint() {
+  return { message: 'Apenas administradores podem acessar' };
+}
+```
+
+## 🛡️ Segurança
+
+- Tokens JWT com expiração configurável
+- Validação rigorosa de dados de entrada
+- Guards personalizados para proteção de rotas
+- Autorização baseada em roles
+
+## 📄 Licença
+
+Este projeto foi desenvolvido como parte de um desafio técnico.
