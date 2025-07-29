@@ -1,4 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { Role } from 'src/decorators/roles.decorator';
 
 @Injectable()
 export class UsersService {
@@ -7,13 +8,13 @@ export class UsersService {
       userId: 1,
       email: 'teste1@gmail.com',
       password: '12345678',
-      userRole: 'ADMIN',
+      userRole: [Role.Admin],
     },
     {
       userId: 2,
       email: 'teste2@gmail.com',
       password: '87654321',
-      userRole: 'USER',
+      userRole: [Role.User],
     },
   ];
 
