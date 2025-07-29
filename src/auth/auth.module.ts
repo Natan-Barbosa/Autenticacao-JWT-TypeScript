@@ -10,7 +10,11 @@ dotenv.config();
 @Module({
   imports: [
     UsersModule,
-    JwtModule.register({ secret: process.env.JWT_SECRET }),
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
+      global: true,
+      signOptions: { expiresIn: '1h' },
+    }),
   ],
   controllers: [AuthController],
   providers: [AuthService],
